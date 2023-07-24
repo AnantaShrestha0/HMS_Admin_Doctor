@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Form</title>
+<link rel="stylesheet" th:href="@{/css/loginstyle.css}">
+
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form action="/doctor/login" method="post">
+      <p style="color: red">[[${username_error}]]</p>
+        <input type="text" placeholder="Enter your email" id="email" name="email">
+        <p style="color: red">[[${password_error}]]</p>
+        <input type="password" placeholder="Enter your password" id="password" name="password">
+        <a href="/forgot">Forgot password?</a>
+        <input type="submit" class="button" value="Login" onclick="searchdata()">
+        <!-- <input type="submit" value="login" onclick=""> -->
+        <div class="signup">
+          <span class="signup">Don't have an account?
+            <a href="/doctor/signup">Signup</a>
+            <br>
+            <a href="/">Home page</a>
+          </span>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+</body>
+</html>

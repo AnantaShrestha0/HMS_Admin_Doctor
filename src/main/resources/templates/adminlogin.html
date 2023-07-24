@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Form</title>
+<link rel="stylesheet" th:href="@{/css/loginstyle.css}">
+
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+
+      <header>Admin Login</header>
+      <form action="/admin/login" method="post">
+      <p style="color: red">[[${admin_error}]]</p>
+        <input type="text" placeholder="Enter your email" id="email" name="email">
+        <input type="password" placeholder="Enter your password" id="password" name="password">
+        <a href="/forgot">Forgot password?</a>
+        <input type="submit" class="button" value="Login" onclick="searchdata()">
+        <!-- <input type="submit" value="login" onclick=""> -->
+        <div class="signup">
+            <a href="/">Home page</a>
+          </span>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+</body>
+</html>

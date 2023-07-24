@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign up Form</title>
+<link rel="stylesheet" href="" th:href="@{/css/signupstyle.css}">
+</head>
+<body>
+
+ <div class="container">
+      <header style="text-align: center;">Signup</header>
+      <form action="/doctor/signup" method="post">
+      <p style="color: red">[[${same_username_found}]]</p>
+      
+      <div class="field email-field">
+          <div class="input-field">
+            <input type="email" placeholder="Enter your email" class="fname" id="fname" name="email" />
+          </div>
+        </div>
+        
+       
+
+        
+        <div class="field create-password">
+          <div class="input-field">
+            <input
+              type="password"
+              placeholder="Create password"
+              class="password"
+              id="password"
+              name="password"
+            />
+            <i class="bx bx-hide show-hide"></i>
+          </div>
+          <span class="error password-error">
+            <i class="bx bx-error-circle error-icon"></i>
+            <p class="error-text">
+              Please enter atleast 8 charatcer with number, symbol, small and
+              capital letter.
+            </p>
+          </span>
+          
+        </div>
+        
+        <div class="field confirm-password">
+          <div class="input-field">
+            <input
+              type="password"
+              placeholder="Confirm password"
+              class="cPassword"
+              name="conpassword"
+            />
+            <i class="bx bx-hide show-hide"></i>
+          </div> 
+          <span class="error cPassword-error">
+            <i class="bx bx-error-circle error-icon"></i>
+            <p class="error-text">Password don't match</p>
+          </span>
+        </div>
+        <div class="input-field button">
+          <input type="submit" value="Submit Now" />
+        </div>
+
+        <div class="signin_link">
+          Do you have an account? <a href="/doctor/login" onclick="login_page()">Signin</a>
+          <br>
+          <a href="/">Home page</a>
+        </div>
+      </form>
+    </div>
+</body>
+</html>
