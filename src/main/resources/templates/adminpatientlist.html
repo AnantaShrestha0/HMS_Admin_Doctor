@@ -3,6 +3,58 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+
+<style type="text/css">
+.book_section .ko {
+  padding: 35px 45px;
+  -webkit-box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
+}
+
+.book_section .ko label {
+  color: #000000;
+}
+
+.book_section .ko .custom-input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #00c6a9;
+  height: 45px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 5px;
+  padding: 0 15px;
+}
+
+.book_section .ko .custom-input::-webkit-input-placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko .custom-input:-ms-input-placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko .custom-input::-ms-input-placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko .custom-input::placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko #inputDate {
+  color: #00c6a9;
+}
+
+.book_section .ko #inputDate input {
+  color: #00c6a9;
+}
+
+
+</style>
+
 </head>
 <body class="sub_page">
 
@@ -23,6 +75,12 @@
     <div class="container">
       <div class="row">
         <div class="col">
+        <div class="ko">
+        <div class="cen">
+            <h4>
+              PATIENT<span> LIST</span>
+            </h4>
+            </div>
               <table class="table table-stripted">
     <thead>
     <tr>
@@ -47,7 +105,7 @@
     
     
     <td>
-   <a th:href="@{/viewPatientDeatails(id=${patient.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
+   <a th:href="@{/viewPatientDetails(id=${patient.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
     </td>
     </tr>
 
@@ -61,6 +119,7 @@
     
     
     </table>
+    </div>
         </div>
       </div>
     </div>

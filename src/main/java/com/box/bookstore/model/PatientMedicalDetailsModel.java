@@ -16,8 +16,8 @@ public class PatientMedicalDetailsModel {
 	private int height;
 	private int weight;
 	private String gender;
-	private String bloadpressure;
+	private String bloodpressure;
 	private String bloodgroup;
-	private int sugerlevel;
+	private int sugarlevel;
 	
 }

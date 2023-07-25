@@ -15,6 +15,8 @@ import com.box.bookstore.model.StaffModel;
 import com.box.bookstore.service.AdminService;
 import com.box.bookstore.service.StaffService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -26,7 +28,7 @@ public class AdminController {
 	private StaffService staffService;
 	
 	@PostMapping("/login")
-	public String postAdmin(AdminModel adminModel,Model model) {
+	public String postAdmin(AdminModel adminModel,Model model,HttpSession httpSession) {
 		AdminModel admin=adminService.findAdmin(adminModel);
 		if(admin==null) {
 			model.addAttribute("admin_error","Admin username and password not matched");
@@ -41,6 +43,7 @@ public class AdminController {
 		if(admin.getChangedpassword().equals("yes")) {
 //			int n=p.getId();			
 //			return "redirect:/patientinterface/"+n;
+			httpSession.setAttribute("validAdmin",admin);
 			return "redirect:/adminuserinterface";
 		}
 		}catch(Exception e) {
@@ -63,20 +66,30 @@ public class AdminController {
 	
 	
 	@PostMapping("/change_email_password")
-	public String postChangeEmailPassword(AdminModel adminModel,Model model) {
+	public String postChangeEmailPassword(AdminModel adminModel,Model model,HttpSession httpSession) {
+		
+//		if(httpSession.getAttribute("validAdmin")==null) {
+//			return "adminlogin";
+//		}
+		
 		String cpassword=adminModel.getCpassword();
 		if(adminModel.getPassword().equals(cpassword)) {
 			adminModel.setChangedpassword("yes");
+		//	httpSession.setAttribute("validAdmin",adminModel);
 			adminService.changeEmailPassword(adminModel);
 			return "redirect:/adminuserinterface";
 			
 		}
 		model.addAttribute("password_not_matched","Password not matched");
+		model.addAttribute("adminObj", adminModel);
 		return "adminchangepassword";
 	}
 	
 	@PostMapping("/addStaff")
-	public String postAddStaff(StaffModel staffModel) {
+	public String postAddStaff(StaffModel staffModel,HttpSession httpSession) {
+		if(httpSession.getAttribute("validAdmin")==null) {
+			return "adminlogin";
+		}
 		staffService.addStaff(staffModel);
 		return "redirect:/addStaff";
 	}

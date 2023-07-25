@@ -68,7 +68,7 @@
      <div class="centered">
 
 		<div class="card-body">
-				<form action="" th:object="${doctorObject}">
+				<form action="" th:object="${patientObject}">
 				
 				   <div class="row p-2">
 						<div class="col-4">Patient Id</div>
@@ -82,7 +82,7 @@
 					<div class="row p-2">
 						<div class="col-4">Full Name</div>
 						<div class="col-6">
-							<input type="text" th:field="*{personalPersonalDetailsModel.fullname}" readonly="readonly" name="fname" class="form-control">
+							<input type="text" th:field="*{patientPersonalDetailsModel.fullname}" readonly="readonly" name="fname" class="form-control">
 
 
 						</div>
@@ -94,8 +94,9 @@
 						<div class="col-4">Gender</div>
 						<div class="col-6">
 						<div class="leftAlign">
-							<input type="radio" th:field="*{patientMedicalDetailsModel.gender}" th:disabled="${true}" name="gender" value="male"> Male <input
-								type="radio" th:field="*{patientMedicalDetailsModel.gender}" th:disabled="${true}" name="gender" value="female">Female
+							<input type="radio" th:field="*{patientMedicalDetailsModel.gender}" th:disabled="${true}" name="gender" value="male"> Male 
+							<input type="radio" th:field="*{patientMedicalDetailsModel.gender}" th:disabled="${true}" name="gender" value="female">Female
+							<input type="radio" th:field="*{patientMedicalDetailsModel.gender}" th:disabled="${true}" name="gender" value="other">Other
                          </div>
 
 						</div>
@@ -119,14 +120,14 @@
 					<div class="row p-2">
 						<div class="col-4">Address</div>
 						<div class="col-6">
-							<input type="text" th:field="*{patientPersonalDetailsModeladdress}" readonly="readonly" name="address.city" class="form-control">
+							<input type="text" th:field="*{patientPersonalDetailsModel.address}" readonly="readonly" name="address.city" class="form-control">
 						</div>
 					</div>
 					
 					<div class="row p-2">
 						<div class="col-4">Past Medical History</div>
 						<div class="col-6">
-							<input type="text" th:field="*{patientPersonalDetailsModel.address}" readonly="readonly" name="address.city" class="form-control">
+							<input type="text" th:field="*{patientPersonalDetailsModel.pastmedicalhis}" readonly="readonly" name="address.city" class="form-control">
 						</div>
 					</div>
 
@@ -135,7 +136,7 @@
 					<div class="row p-2">
 						<div class="col-4">Phone Number</div>
 						<div class="col-6">
-							<input type="text" th:field="*{doctorPersonalDetailsModel.phonenumber}" readonly="readonly" name="phone" class="form-control">
+							<input type="text" th:field="*{patientPersonalDetailsModel.phonenumber}" readonly="readonly" name="phone" class="form-control">
 
 
 						</div>
@@ -183,9 +184,9 @@
 					</div>
 					
 					<div class="row p-2">
-						<div class="col-4">Bload Group</div>
+						<div class="col-4">Blood Group</div>
 						<div class="col-6">
-							<input type="text" th:field="*{patientMedicalDetailsModel.bloadgroup}" readonly="readonly" name="salary" class="form-control">
+							<input type="text" th:field="*{patientMedicalDetailsModel.bloodgroup}" readonly="readonly" name="salary" class="form-control">
 
 
 						</div>
@@ -199,7 +200,7 @@
                    <div class="col-4"></div>
                    <div class="col-6">
                    <div class="leftAlign">
-                   <a href="/doctorlist"> <input type="submit" value="Back"  class="btn btn-success btn-lg"></a>
+                   <a href="/patientlist"> <input type="submit" value="Back"  class="btn btn-success btn-lg"></a>
                    </div>
                    </div>
                    </div>

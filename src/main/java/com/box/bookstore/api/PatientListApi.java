@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,14 +18,15 @@ import com.box.bookstore.model.PatientModel;
 @RestController
 public class PatientListApi {
 
-	@GetMapping("/api/patientlist")
+	@GetMapping("/api/patientList")
 	public List<PatientModel> getPatientList() {
 		RestTemplate restTemplate=new RestTemplate();
-		PatientModel[] patientList=restTemplate.getForObject("http://localhost:8080/api/patientlist",PatientModel[].class);
+		PatientModel[] patientList=restTemplate.getForObject("http://localhost:8080/api/patientList",PatientModel[].class);
 		List<PatientModel> patlist=List.of(patientList);
 	    return patlist;
 
 	}
+
 //	@Autowired
 //	private Patient_repo patient_repo;
 //	
@@ -42,6 +44,14 @@ public class PatientListApi {
 //		return list;
 //	}
 	
+	
+	@GetMapping("/api/patient")
+	public PatientModel getPatient(int id) {
+		String url="http://localhost:8080/api/patient/"+id;
+		RestTemplate restTemplate=new RestTemplate();
+		PatientModel patient=restTemplate.getForObject(url,PatientModel.class);
+		return patient;
+	}
 	
 	
 	
