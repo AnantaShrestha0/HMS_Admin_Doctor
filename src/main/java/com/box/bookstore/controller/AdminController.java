@@ -44,6 +44,7 @@ public class AdminController {
 //			int n=p.getId();			
 //			return "redirect:/patientinterface/"+n;
 			httpSession.setAttribute("validAdmin",admin);
+			httpSession.setMaxInactiveInterval(10000000);
 			return "redirect:/adminuserinterface";
 		}
 		}catch(Exception e) {

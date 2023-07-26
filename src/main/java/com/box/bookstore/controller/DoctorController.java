@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.box.bookstore.model.DoctorModel;
 import com.box.bookstore.service.DoctorService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/doctor")
 public class DoctorController {
@@ -22,7 +24,7 @@ public class DoctorController {
 	}
 	
 	@PostMapping("/login")
-	public String postlogin(DoctorModel doctortModel,Model model) {
+	public String postlogin(DoctorModel doctortModel,Model model,HttpSession httpSession) {
 		
 		DoctorModel p=doctorService.findDoctor(doctortModel);
 		if(p==null) {
@@ -31,7 +33,9 @@ public class DoctorController {
 		}
 		try {
 		if(p.getRegistered().equals("yes")) {
-			return "doctoruserinterface";
+			httpSession.setAttribute("validDoctor", p);
+			httpSession.setMaxInactiveInterval(10000000);
+			return "redirect:/appointmentRequestList";
 		}
 		}catch(Exception e) {
 		

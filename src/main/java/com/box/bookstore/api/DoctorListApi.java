@@ -35,4 +35,12 @@ public class DoctorListApi {
 		
 		return doctorModel.getDoctorPersonalDetailsModel().getFullname();
 	}
+	
+	
+	@GetMapping("/api/doctorGmail/{id}")
+	public String getDoctorGmail(@PathVariable int id) {
+		DoctorModel doctorModel=doctorService.getDoctorId(id);
+		
+		return doctorModel.getDoctorPersonalDetailsModel().getGmail();
+	}
 }

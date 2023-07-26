@@ -28,10 +28,10 @@ public class PatientModel {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="patient_personal_detail_Id")
 	private PatientPersonalDetailsModel patientPersonalDetailsModel;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="patient_medical_detail_Id")
-	private PatientMedicalDetailsModel patientMedicalDetailsModel;
+//	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="patient_medical_detail_Id")
+//	private PatientMedicalDetailsModel patientMedicalDetailsModel;
 	
 	
 }
