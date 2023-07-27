@@ -24,7 +24,7 @@ public class AppointmentApi {
 	}
 	
 	@GetMapping("/api/appointmentList")
-	public List<AppointmentModel> getAppointmentList(int id){
+	public List<AppointmentModel> getAppointmentAcceptedList(int id){
 		RestTemplate restTemplate=new RestTemplate();
 		String url="http://localhost:8080/api/appointmentList/"+id;
 		AppointmentModel[] appointmentList=restTemplate.getForObject(url, AppointmentModel[].class);
@@ -54,6 +54,13 @@ public class AppointmentApi {
 	public void getAppointmentAccept(int id) {
 		RestTemplate restTemplate=new RestTemplate();
 		String url="http://localhost:8080/api/appointmentApprove/"+id;
+		restTemplate.getForObject(url, void.class);
+	}
+	
+	@GetMapping("/api/appointmentDelete")
+	public void getAppointmentDelete(int id) {
+		RestTemplate restTemplate=new RestTemplate();
+		String url="http://localhost:8080/api/delete/"+id;
 		restTemplate.getForObject(url, void.class);
 	}
 	

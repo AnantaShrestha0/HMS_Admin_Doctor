@@ -204,13 +204,14 @@ public class AdminpageController {
 	
 	
 	@GetMapping("/viewDoctorDetails")
-	public String getadminasjdn(@RequestParam int id,Model model,HttpSession httpSession) {
+	public String getAdminViewDoctorDetails(@RequestParam int id,Model model,HttpSession httpSession) {
 		
 		if(httpSession.getAttribute("validAdmin")==null) {
 			return "adminlogin";
 		}
 		
 		DoctorModel doctorModel=doctorService.getDoctorId(id);
+		model.addAttribute("doctorListIndicator","active");
 		model.addAttribute("doctorObject", doctorModel);
 		return "admin_view_doctor_details";
 	}
@@ -223,7 +224,8 @@ public class AdminpageController {
 		}
 		
 		PatientModel patientModel=patientListApi.getPatient(id);
-	  model.addAttribute("patientObject", patientModel);
+		model.addAttribute("patientListIndicator","active");
+	    model.addAttribute("patientObject", patientModel);
 		//model.addAttribute("doctorObject", doctorModel);
 		return "admin_view_patient_details";
 	}
@@ -236,6 +238,7 @@ public class AdminpageController {
 		}
 		
 		DoctorModel doctorModel=doctorService.getDoctorId(id);
+		model.addAttribute("doctorRequestListIndicator","active");
 		model.addAttribute("doctorObject", doctorModel);
 		return "admin_view_doctor_request_details";
 	}

@@ -43,4 +43,11 @@ public class DoctorListApi {
 		
 		return doctorModel.getDoctorPersonalDetailsModel().getGmail();
 	}
+	
+	@GetMapping("/api/doctor/{id}")
+	public DoctorModel getDoctor(@PathVariable int id) {
+		DoctorModel doctorModel=doctorService.getDoctorId(id);
+		
+		return doctorModel;
+	}
 }

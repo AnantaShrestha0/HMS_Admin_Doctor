@@ -9,7 +9,7 @@
     <div class="container">
       <div class="info_top">
         <div class="info_logo">
-          <a href="">
+          <a href="/appointmentRequestList">
             <img src="images/logo.png" alt="">
           </a>
         </div>
@@ -69,14 +69,14 @@
                 Useful link
               </h5>
               <div class="info_links_menu">
-                <a href="/appointmentRequestList" th:class="${appointmentRequestIndicator}">
+                <a href="/appointmentRequestList" th:class="${appointmentRequestListIndicator}">
                   Appointment Request
                 </a>
-                <a href="/appointmentList" th:class="${appointmentListIndicator}">
+                <a href="/appointmentAcceptedList" th:class="${appointmentAcceptedListIndicator}">
                   Appointment List
                 </a>
                 
-                <a href="appointmentCanceled" th:class="${appointmentCancelIndicator}">
+                <a href="/appointmentCanceledList" th:class="${appointmentCancelListIndicator}">
                   Appointment Canceled
                 </a>
              

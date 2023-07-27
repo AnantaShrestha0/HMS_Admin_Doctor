@@ -20,6 +20,12 @@ public class DoctorPageController {
 	
 	@GetMapping("/doctor_interface")
 	public String getAdminUserInterface(Model model,HttpSession httpSession) {
+		
+
+		if(httpSession.getAttribute("validDoctor")==null) {
+			return "login";
+		}
+		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
 		
 		model.addAttribute("appointmentRequestList", appointmentApi.getAppointmentRequestList(doctorModel.getId()));
@@ -29,29 +35,51 @@ public class DoctorPageController {
 	
 	@GetMapping("/appointmentRequestList")
 	public String getAppointmentRequestList(Model model,HttpSession httpSession) {
+		
+		if(httpSession.getAttribute("validDoctor")==null) {
+			return "login";
+		}
+		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
-		model.addAttribute("appointmentRequestIndicator","active");
+		model.addAttribute("appointmentRequestListIndicator","active");                
 		model.addAttribute("appointmentRequestList", appointmentApi.getAppointmentRequestList(doctorModel.getId()));
 		return "appointmentRequestList";
 		
 	}
 	
-	@GetMapping("/appointmentList")
-	public String getAppointmentList(Model model,HttpSession httpSession) {
-		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
-		model.addAttribute("appointmentListIndicator", "active");
-		model.addAttribute("appointmentList", appointmentApi.getAppointmentList(doctorModel.getId()));
-		return "appointmentList";
-	}
+//	@GetMapping("/appointmentList")
+//	public String getAppointmentList(Model model,HttpSession httpSession) {
+//		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
+//		model.addAttribute("appointmentListIndicator", "active");
+//		model.addAttribute("appointmentList", appointmentApi.getAppointmentList(doctorModel.getId()));
+//		return "appointmentList";
+//	}
 	
-	@GetMapping("/appointmentCanceled")
+	@GetMapping("/appointmentCanceledList")
 	public String getAppointmentCanceledList(Model model,HttpSession httpSession) {
 		
+		if(httpSession.getAttribute("validDoctor")==null) {
+			return "login";
+		}
+		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
-		model.addAttribute("appointmentCancelIndicator", "active");
+		model.addAttribute("appointmentCancelListIndicator", "active");
 		model.addAttribute("appointmentList", appointmentApi.getAppointmentCanceledList(doctorModel.getId()));
 		return "appointmentCanceledList";
 		
+	}
+	
+	@GetMapping("/appointmentAcceptedList")
+	public String getAppointmentAcceptedList(Model model,HttpSession httpSession){
+		
+		if(httpSession.getAttribute("validDoctor")==null) {
+			return "login";
+		}
+		
+		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
+		model.addAttribute("appointmentAcceptedListIndicator", "active");
+		model.addAttribute("appointmentList", appointmentApi.getAppointmentAcceptedList(doctorModel.getId()));
+		return "appointmentAcceptedList";
 	}
 	
 	

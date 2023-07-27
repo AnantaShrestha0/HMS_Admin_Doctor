@@ -44,7 +44,7 @@ public class AdminController {
 //			int n=p.getId();			
 //			return "redirect:/patientinterface/"+n;
 			httpSession.setAttribute("validAdmin",admin);
-			httpSession.setMaxInactiveInterval(10000000);
+			httpSession.setMaxInactiveInterval(999999999);
 			return "redirect:/adminuserinterface";
 		}
 		}catch(Exception e) {
@@ -95,6 +95,12 @@ public class AdminController {
 		return "redirect:/addStaff";
 	}
 	
+	
+	@GetMapping("/logout")
+	private String logOut(HttpSession session) {
+		session.invalidate();//session kill
+		return "adminlogin";
+	}
 	
 	
 	

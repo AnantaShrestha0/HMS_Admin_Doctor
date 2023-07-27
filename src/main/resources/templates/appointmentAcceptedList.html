@@ -35,23 +35,71 @@
   <link href="css/responsive.css" rel="stylesheet" />
   
   <style type="text/css">
+  .cen{
+  text-align: center;
+  }
   
-  .centered {
-            
-            text-align: center;
-        }
-        
-       .leftAlign{
-       text-align: left;
-       }
-        
-        
+.book_section h3::before{
+   content:"";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 75px;
+    height: 2px;
+    background-color: #00c6a9;
+}
+
+.book_section .ko {
+  padding: 35px 45px;
+  -webkit-box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.07);
+}
+
+.book_section .ko label {
+  color: #000000;
+}
+
+.book_section .ko .custom-input {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #00c6a9;
+  height: 45px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 5px;
+  padding: 0 15px;
+}
+
+.book_section .ko .custom-input::-webkit-input-placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko .custom-input:-ms-input-placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko .custom-input::-ms-input-placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko .custom-input::placeholder {
+  color: #00c6a9;
+}
+
+.book_section .ko #inputDate {
+  color: #00c6a9;
+}
+
+.book_section .ko #inputDate input {
+  color: #00c6a9;
+}
+
+
   </style>
 </head>
 
 <body class="sub_page">
-
-
 
   <div class="hero_area">
     <!-- header section strats -->
@@ -65,100 +113,58 @@
 
 
     <!-- book section-->
-     <div class="centered">
 
-		<div class="card-body">
-				<form action="" th:object="${appointmentObject}">
-				
-				   <div class="row p-2">
-						<div class="col-4">Appointment Id</div>
-						<div class="col-6">
-							<input type="text" th:field="*{id}" readonly="readonly" name="lname" class="form-control">
-
-
-						</div>
-					</div>
-					
-					<div class="row p-2">
-						<div class="col-4">Patient Name</div>
-						<div class="col-6">
-							<input type="text" th:field="*{patient_name}" readonly="readonly" name="fname" class="form-control">
-
-
-						</div>
-					</div>
-
-					
-
-					<div class="row p-2">
-						<div class="col-4">Gender</div>
-						<div class="col-6">
-						<div class="leftAlign">
-							<input type="radio" th:field="*{gender}" th:disabled="${true}" name="gender" value="male"> Male <input
-								type="radio" th:field="*{gender}" th:disabled="${true}" name="gender" value="female">Female
-								
-								<input
-								type="radio" th:field="*{gender}" th:disabled="${true}" name="gender" value="other">Other
-                         </div>
-
-						</div>
-					</div>
-
-					<div class="row p-2">
-						<div class="col-4">Appointment Date</div>
-						<div class="col-6">
-							<input type="date" th:field="*{appointmentdate}" readonly="readonly" name="dob" class="form-control">
-						</div>
-					</div>
-
-
-					<div class="row p-2">
-						<div class="col-4">Blood Pressure</div>
-						<div class="col-6">
-							<input type="text" th:field="*{bloodPressure}" readonly="readonly" name="address.country" class="form-control">
-						</div>
-					</div>
-
-					<div class="row p-2">
-						<div class="col-4">Symptoms</div>
-						<div class="col-6">
-							<input type="text" th:field="*{symptoms}" readonly="readonly" name="address.city" class="form-control">
-						</div>
-					</div>
-					
-					
-					<div class="row p-2">
-						<div class="col-4">Pass Medical History</div>
-						<div class="col-6">
-							<input type="text" th:field="*{passMedicalHistory}" readonly="readonly" name="address.city" class="form-control">
-						</div>
-					</div>
-					
-					<div class="row p-2">
-						<div class="col-4">Age</div>
-						<div class="col-6">
-							<input type="text" th:field="*{age}" readonly="readonly" name="address.city" class="form-control">
-						</div>
-					</div>
-					
-
-					
-
-			
-
-					
-				</form>
-				   <div class="row p-2">
-                   <div class="col-4"></div>
-                   <div class="col-6">
-                   <div class="leftAlign">
-                   <a href="/appointmentRequestList"> <input type="submit" value="Back"  class="btn btn-success btn-lg"></a>
-                   </div>
-                   </div>
-                   </div>
-
-			</div>
-			</div>
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="ko">
+            <div class="cen">
+            <h4>
+              APPOINTMENT<span> LIST</span>
+            </h4>
+            </div>
+   
+            <table class="table table-stripted">
+        <thead>
+    <tr>
+    <th>Doctor Name</th>
+    <th>Patient Name</th>
+    <th>Time</th>
+    <th>Action</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+ <tr th:each="appointment:${appointmentList}">
+    <td>[[${appointment.doctor_name}]]</td>
+    <td>[[${appointment.patient_name}]]</td>
+    <td>[[${appointment.appointmentdate}]]</td>
+    <td>
+    <!--  <a th:href="@{/department/edit(id=${d.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>-->
+    <a th:href="@{/appointmentViewDetailsForAccepted(id=${appointment.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
+   <a th:href="@{/appointmentAcceptedCancel(id=${appointment.id})}"><input type="submit" value="Cancel" class="btn btn-danger"></a>
+    <!-- <a th:href="@{/department/view(id=${d.id})}"><input type="submit" value="View" class="btn btn-primary"></a>-->
+    </td>
+    </tr>
+ 
+   
+    
+    </tbody>
+    
+    
+    </table>
+            
+          <!-- <input type="hidden" name="patientid" th:value="${id}">-->
+ 
+            
+             
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
 
 
   <!-- end book section -->

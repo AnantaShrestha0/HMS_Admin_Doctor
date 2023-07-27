@@ -119,11 +119,12 @@
       <div class="row">
         <div class="col">
           <div class="ko">
-         <div class="cen">
+            <div class="cen">
             <h4>
-              APPOINTMENT<span> REQUEST</span>
+              APPOINTMENT<span> CANCEL</span>
             </h4>
             </div>
+            
    
             <table class="table table-stripted">
         <thead>
@@ -136,15 +137,14 @@
     </thead>
     
     <tbody>
- <tr th:each="appointment:${appointmentRequestList}">
+ <tr th:each="appointment:${appointmentList}">
     <td>[[${appointment.doctor_name}]]</td>
     <td>[[${appointment.patient_name}]]</td>
     <td>[[${appointment.appointmentdate}]]</td>
     <td>
     <!--  <a th:href="@{/department/edit(id=${d.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>-->
-    <a th:href="@{/appointmentViewDetailsForRequest(id=${appointment.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
-    <a th:href="@{/appointmentAccept(id=${appointment.id})}"><input type="submit" value="Accept" class="btn btn-success"></a>
-   <a th:href="@{/appointmentRequestCancel(id=${appointment.id})}"><input type="submit" value="Cancel" class="btn btn-danger"></a>
+    <a th:href="@{/appointmentViewDetailsForCancel(id=${appointment.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
+   <a th:href="@{/appointmentDelete(id=${appointment.id})}"><input type="submit" value="Ok" class="btn btn-success"></a>
     <!-- <a th:href="@{/department/view(id=${d.id})}"><input type="submit" value="View" class="btn btn-primary"></a>-->
     </td>
     </tr>

@@ -34,7 +34,7 @@ public class DoctorController {
 		try {
 		if(p.getRegistered().equals("yes")) {
 			httpSession.setAttribute("validDoctor", p);
-			httpSession.setMaxInactiveInterval(10000000);
+			httpSession.setMaxInactiveInterval(999999999);
 			return "redirect:/appointmentRequestList";
 		}
 		}catch(Exception e) {
@@ -80,10 +80,17 @@ public class DoctorController {
 	
 	@PostMapping("/registration")
 	public String postregistration(DoctorModel doctorModel) {
+		
 		doctorModel.setRegistered("yes");
 		doctorService.addDoctor(doctorModel);
 		return "redirect:/doctor_interface";
 		
+	}
+	
+	@GetMapping("/logout")
+	private String logOut(HttpSession session) {
+		session.invalidate();//session kill
+		return "login";
 	}
 
 }
