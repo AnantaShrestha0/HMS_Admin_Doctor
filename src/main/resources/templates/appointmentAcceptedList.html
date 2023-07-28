@@ -143,6 +143,7 @@
     <td>
     <!--  <a th:href="@{/department/edit(id=${d.id})}"><input type="submit" value="Edit" class="btn btn-success"></a>-->
     <a th:href="@{/appointmentViewDetailsForAccepted(id=${appointment.id})}"><input type="submit" value="View" class="btn btn-primary"></a>
+    <a th:href="@{/appointmentDelete(id=${appointment.id})}"><input type="submit" value="Done" class="btn btn-success"></a>
    <a th:href="@{/appointmentAcceptedCancel(id=${appointment.id})}"><input type="submit" value="Cancel" class="btn btn-danger"></a>
     <!-- <a th:href="@{/department/view(id=${d.id})}"><input type="submit" value="View" class="btn btn-primary"></a>-->
     </td>

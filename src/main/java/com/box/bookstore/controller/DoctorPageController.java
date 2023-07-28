@@ -27,8 +27,12 @@ public class DoctorPageController {
 		}
 		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
-		
+		try {
 		model.addAttribute("appointmentRequestList", appointmentApi.getAppointmentRequestList(doctorModel.getId()));
+		}catch (Exception e) {
+			// TODO: handle exception
+			return "doctorServerError";
+		}
 		return "appointmentRequestList";
 	}
 	
@@ -41,8 +45,14 @@ public class DoctorPageController {
 		}
 		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
-		model.addAttribute("appointmentRequestListIndicator","active");                
+		model.addAttribute("appointmentRequestListIndicator","active");         
+		try {
 		model.addAttribute("appointmentRequestList", appointmentApi.getAppointmentRequestList(doctorModel.getId()));
+		}catch (Exception e) {
+			// TODO: handle exception
+		
+			return "doctorServerError";
+		}
 		return "appointmentRequestList";
 		
 	}
@@ -64,7 +74,13 @@ public class DoctorPageController {
 		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
 		model.addAttribute("appointmentCancelListIndicator", "active");
+		try {
 		model.addAttribute("appointmentList", appointmentApi.getAppointmentCanceledList(doctorModel.getId()));
+		}catch (Exception e) {
+			// TODO: handle exception
+			
+			return "doctorServerError";
+		}
 		return "appointmentCanceledList";
 		
 	}
@@ -78,7 +94,15 @@ public class DoctorPageController {
 		
 		DoctorModel doctorModel=(DoctorModel) httpSession.getAttribute("validDoctor");
 		model.addAttribute("appointmentAcceptedListIndicator", "active");
+		
+		try {
 		model.addAttribute("appointmentList", appointmentApi.getAppointmentAcceptedList(doctorModel.getId()));
+		}catch (Exception e) {
+			// TODO: handle exception
+		
+			return "doctorServerError";
+		}
+		
 		return "appointmentAcceptedList";
 	}
 	
